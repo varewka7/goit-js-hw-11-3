@@ -85,12 +85,13 @@ function onSearchForm(e) {
       }
     })
     .catch(error => console.log(error))
-    .finally(() => {
-      searchForm.reset();
-    });
+    // .finally(() => {
+    //   searchForm.reset();
+    // });
 }
 
 function onloadMore() {
+
   page += 1;
   simpleLightBox.destroy();
 
@@ -98,7 +99,7 @@ function onloadMore() {
     .then(data => {
       renderGallery(data.hits);
       simpleLightBox = new SimpleLightbox('.gallery a').refresh();
-
+console.log(data.hits)
       const totalPages = Math.ceil(data.totalHits / perPage);
 
       if (page > totalPages) {
@@ -111,6 +112,9 @@ function onloadMore() {
 }
 
 function checkIfEndOfPage() {
+  console.log(window.innerHeight)
+  console.log(window.pageYOffset)
+  console.log(document.documentElement.scrollHeight)
   return (
     window.innerHeight + window.pageYOffset >=
     document.documentElement.scrollHeight
@@ -119,6 +123,7 @@ function checkIfEndOfPage() {
 
 // Функція, яка виконуеться, якщо користувач дійшов до кінця сторінки
 function showLoadMorePage() {
+  console.log(checkIfEndOfPage())
   if (checkIfEndOfPage()) {
     onloadMore();
   }
