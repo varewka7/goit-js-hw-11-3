@@ -49,14 +49,14 @@ function renderGallery(images) {
 
   gallery.insertAdjacentHTML('beforeend', markup);
   // Цей код дозволяє автоматично прокручувати сторінку на висоту 2 карток галереї, коли вона завантажується
-  const { height: cardHeight } = document
-    .querySelector('.gallery')
-    .firstElementChild.getBoundingClientRect();
+  // const { height: cardHeight } = document
+  //   .querySelector('.gallery')
+  //   .firstElementChild.getBoundingClientRect();
 
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
+  // window.scrollBy({
+  //   top: cardHeight * 2,
+  //   behavior: 'smooth',
+  // });
 }
 
 function onSearchForm(e) {
@@ -112,9 +112,9 @@ console.log(data.hits)
 }
 
 function checkIfEndOfPage() {
-  console.log(window.innerHeight)
-  console.log(window.pageYOffset)
-  console.log(document.documentElement.scrollHeight)
+  // console.log(window.innerHeight)
+  // console.log(window.pageYOffset)
+  // console.log(document.documentElement.scrollHeight)
   return (
     window.innerHeight + window.pageYOffset >=
     document.documentElement.scrollHeight
@@ -123,7 +123,7 @@ function checkIfEndOfPage() {
 
 // Функція, яка виконуеться, якщо користувач дійшов до кінця сторінки
 function showLoadMorePage() {
-  console.log(checkIfEndOfPage())
+  // console.log(checkIfEndOfPage())
   if (checkIfEndOfPage()) {
     onloadMore();
   }
